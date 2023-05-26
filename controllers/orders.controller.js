@@ -1,5 +1,6 @@
-const ActiveOrder = require("../models/active-order.model");
-const FinishedOrder = require("../models/finished-order.model");
+const { Product } = require("../models/product.model");
+const { ActiveOrder, FinishedOrder } = require("../models/order.model");
+const { OrderContent } = require("../models/order-content.model");
 
 exports.getActiveOrders = (req, res) => {
     // Get orders flagged as "preparing" or "ready" on active db
