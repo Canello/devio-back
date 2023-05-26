@@ -10,7 +10,7 @@ const config = {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    customer_name: {
+    customerName: {
         type: DataTypes.STRING,
         allowNull: false,
     },
@@ -22,13 +22,13 @@ const config = {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    ordered_at: {
-        type: DataTypes.DATE,
-        allowNull: false,
-    },
 };
 
-const ActiveOrder = sequelize.define("ActiveOrder", config);
-const FinishedOrder = sequelize.define("FinishedOrder", config);
+const ActiveOrder = sequelize.define("ActiveOrder", config, {
+    timestamps: true,
+});
+const FinishedOrder = sequelize.define("FinishedOrder", config, {
+    timestamps: true,
+});
 
 module.exports = { ActiveOrder, FinishedOrder };
