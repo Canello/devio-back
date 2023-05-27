@@ -1,16 +1,14 @@
 const { Product } = require("../models/product.model");
 const { ActiveOrder, FinishedOrder } = require("../models/order.model");
-const { OrderContent } = require("../models/order-content.model");
 
-exports.getActiveOrders = (req, res) => {
-    // Get orders flagged as "preparing" or "ready" on active db
-    // Respond with two arrays of orders, one for "preparing" and the other for "ready"
-    res.json("hi");
+exports.getActiveOrders = async (req, res) => {
+    // Get all active orders
+    // Respond with them
 };
 
-exports.createOrder = (req, res) => {
+exports.createOrder = async (req, res) => {
     // Validate request
-    // Create order and save it on active db
+    // Create order
     // Respond with created order
 };
 

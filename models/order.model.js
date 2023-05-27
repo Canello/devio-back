@@ -1,34 +1,38 @@
-const { DataTypes } = require("sequelize");
-const { sequelize } = require("../config/database.config");
+const mongoose = require("mongoose");
 
-const config = {
-    id: {
-        type: DataTypes.STRING,
-        primaryKey: true,
+const orderSchema = new mongoose.Schema(
+    {
+        code: {
+            type: String,
+            required: true,
+        },
+        customerName: {
+            type: String,
+            required: true,
+        },
+        notes: {
+            type: String,
+            required: true,
+        },
+        status: {
+            type: String,
+            required: true,
+        },
+        totalPrice: {
+            type: Number,
+            required: true,
+        },
+        content: {
+            type: Array,
+            required: true,
+        },
     },
-    code: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-    customerName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    notes: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    status: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-};
+    {
+        timestamps: true,
+    }
+);
 
-const ActiveOrder = sequelize.define("ActiveOrder", config, {
-    timestamps: true,
-});
-const FinishedOrder = sequelize.define("FinishedOrder", config, {
-    timestamps: true,
-});
+const ActiveOrder = mongoose.model("ActiveOrder", orderSchema);
+const FinishedOrder = mongoose.model("FinishedOrder", orderSchema);
 
 module.exports = { ActiveOrder, FinishedOrder };
