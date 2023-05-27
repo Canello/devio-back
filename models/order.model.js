@@ -1,4 +1,21 @@
 const mongoose = require("mongoose");
+const { productSchema } = require("./product.model");
+
+const contentSchema = new mongoose.Schema(
+    {
+        product: {
+            type: productSchema,
+            required: true,
+        },
+        quantity: {
+            type: Number,
+            required: true,
+        },
+    },
+    {
+        strict: true,
+    }
+);
 
 const orderSchema = new mongoose.Schema(
     {
@@ -23,12 +40,14 @@ const orderSchema = new mongoose.Schema(
             required: true,
         },
         content: {
-            type: Array,
+            type: [contentSchema],
             required: true,
         },
     },
     {
+        strict: true,
         timestamps: true,
+        virtuals: true,
     }
 );
 

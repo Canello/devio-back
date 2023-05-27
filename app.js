@@ -1,3 +1,4 @@
+require("express-async-errors");
 const express = require("express");
 const cors = require("cors");
 const { ordersRouter } = require("./routes/orders.route");
@@ -12,7 +13,7 @@ app.use(cors());
 app.use("/orders", ordersRouter);
 app.use("/products", productsRouter);
 
-app.all("*", (req, res) => {
+app.all("*", (req, res, next) => {
     throw new Error("Não encontrado.");
 });
 
