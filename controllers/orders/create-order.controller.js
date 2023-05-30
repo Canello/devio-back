@@ -1,7 +1,15 @@
 const { ActiveOrder } = require("../../models/order.model");
 
 exports.createOrder = async (req, res) => {
-    const { code, customerName, notes, content } = req.body;
+    const {
+        code,
+        customerName,
+        notes,
+        content,
+        paymentType,
+        received,
+        change,
+    } = req.body;
 
     // Calculate total price of all products in order
     const totalPrice = content.reduce(
@@ -17,6 +25,9 @@ exports.createOrder = async (req, res) => {
         status: "preparing",
         totalPrice,
         content,
+        paymentType,
+        received,
+        change,
     });
     const createdOrder = await order.save();
 

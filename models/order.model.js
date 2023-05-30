@@ -43,6 +43,18 @@ const orderSchema = new mongoose.Schema(
             type: [contentSchema],
             required: true,
         },
+        paymentType: {
+            type: String,
+            required: true,
+        },
+        received: {
+            type: Number,
+            required: true,
+        },
+        change: {
+            type: Number,
+            required: true,
+        },
     },
     {
         strict: true,
