@@ -5,7 +5,16 @@ exports.cancelOrderController = async (req, res) => {
 
     // Delete order from active db
     const deletedOrder = await ActiveOrder.findOneAndDelete({ _id });
-    const { code, customerName, notes, totalPrice, content } = deletedOrder;
+    const {
+        code,
+        customerName,
+        notes,
+        totalPrice,
+        content,
+        paymentType,
+        received,
+        change,
+    } = deletedOrder;
 
     // Create order on finished db flagged as "deleted"
     const order = new FinishedOrder({
@@ -15,6 +24,9 @@ exports.cancelOrderController = async (req, res) => {
         status: "deleted",
         totalPrice,
         content,
+        paymentType,
+        received,
+        change,
     });
     await order.save();
 

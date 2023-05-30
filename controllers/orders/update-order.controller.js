@@ -19,7 +19,16 @@ exports.updateOrder = async (req, res) => {
     } else if (status === "picked_up") {
         // Delete order from active db
         const deletedOrder = await ActiveOrder.findOneAndDelete({ _id });
-        const { code, customerName, notes, totalPrice, content } = deletedOrder;
+        const {
+            code,
+            customerName,
+            notes,
+            totalPrice,
+            content,
+            paymentType,
+            received,
+            change,
+        } = deletedOrder;
 
         // Create order on finished db
         const order = new FinishedOrder({
@@ -29,6 +38,9 @@ exports.updateOrder = async (req, res) => {
             status: "picked_up",
             totalPrice,
             content,
+            paymentType,
+            received,
+            change,
         });
         updatedOrder = await order.save();
     } else {

@@ -2,6 +2,9 @@ const correctOrder = {
     code: 20,
     customerName: "Rodrigo",
     notes: "Sem pícles.",
+    paymentType: "credit",
+    received: 50,
+    change: 4,
     content: [
         {
             product: {
@@ -9,7 +12,7 @@ const correctOrder = {
                 category: "combos",
                 description: "Hambúrguer, queijo e salada.",
                 price: 20.5,
-                imageUrl: "",
+                imageUrl: "/images/category-combos.png",
             },
             quantity: 2,
         },
