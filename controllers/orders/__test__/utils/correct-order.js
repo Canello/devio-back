@@ -2,6 +2,9 @@ const correctOrder = {
     code: 20,
     customerName: "Rodrigo",
     notes: "Sem pícles.",
+    paymentType: "cash",
+    received: 25.5,
+    change: 0,
     content: [
         {
             product: {
